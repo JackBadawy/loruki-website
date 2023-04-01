@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+:root {
+    --primary-color: #004081;
+    --secondary-color: #012952;
+    --dark-color: #000731;
+    --light-color: #f4f4f4;
+    --success-color: #5cb85c;
+    --error-color: #d9534f;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #333; /* #333 is a shade, dark grey */
+    line-height: 1.6; /* spreads out the lines */
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none; /* will get rid of underlines*/
+    color: #333;
+}
+
+h1, /* seperating h1 & h2 to different lines does not seem to matter as long as there is a comma before each header */
+h2 {
+    font-weight: 300; /* will make text in the header less bold */
+    line-height: 1.2; /* makes text more compressed, delault line hight mus be greater than 1.2 */
+    margin: 10px 0; /* margin on top and bottom is 10, left and right is zero, ie seperates headings more */
+}
+
+p {
+    margin: 10px 0; /* no noticable change, may seperate the subtitles? */
+}
+
+img {
+    width: 100%;  /* will keep the images in their container. i think this will stretch the image to the container size you set */
+}
+
+code, pre {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+} 
+
+.hidden {
+   visibility: hidden; 
+   height: 0;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--primary-color); /* changes top of screen to blue */
+    color: #fff; /* turns the main header white but not the 'lengths' ie subheadings because when 'body color was set this meant the 'a' tags were set to this color */
+    height: 70px; /* shortens nav bar ie, the colored bit, default size must be more than 70px */
+}
+
+.navbar ul /* ul tag means unordered list, see notes if you forget what this does */ {
+display: flex;
+}
+
+.navbar a /* a tag means links */ {
+color: #fff;
+padding: 10px; /* seperates links by 10 pixels */
+margin: 0 5px; /*  first number is margin for top and bottom, second number is left and right. */
+}
+
+.navbar a:hover /* a:hover tag means affecting links our mouse is hovering over */ {
+    color: rgb(185, 119, 246);
+    border-bottom: 2px #fff solid; /* adds solid white border under links whith mouse hovering over them in navbar */
+}
+
+.navbar .flex {
+    justify-content: space-between;
+}
+
+/* Showcase*/
+.showcase {
+    height: 400px;
+    background-color: var(--primary-color);
+    color: #fff;
+    position: relative;
+}
+
+.showcase h1 {
+    font-size: 40px;
+}
+
+.showcase p {
+        margin: 20px 0; 
+    }
+
+.showcase .grid {
+    overflow: visible; /* makes box fully visable when it is larger than the container */
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+}
+
+.showcase-text {
+    animation: slideinfromleft 1s ease-in;
+}
+
+
+.showcase-form {
+    position: relative;
+    top: 60px;
+    height: 350px;
+    width: 400px;
+    padding: 40px;
+    z-index: 100; /* sets the stack order of the form to 100 with the intention that the form will appear inftont of other elements */
+    animation: slideinfromright 1s ease-in;
+}
+
+.showcase-form .form-control /* form control raps the inputs? */ {
+margin: 30px 0; /*adds distance of 30px to boxes inside the request a demo form */
+}
+
+.showcase-form input[type="text"],
+.showcase-form input[type="email"] {
+    border: 0;
+    border-bottom: 1px solid #b4becb; /*adds a 1px grey line under the boxes */
+    width: 100%; /* makes the width of the grey line take up all of the form box */
+    padding: 3px;
+    font-size: 16px; /*increases font size of text & email boxes */ 
+}
+
+.showcase-form input:focus {
+    outline: none; /* removes black box border that appears when box is clicked */
+}
+
+.showcase::before, 
+.showcase::after { /* sets up small bar below main display box where slant will be added */
+    content: ''; /* to use before or after you need to have a content property*/
+    position: absolute;
+    height: 100px;
+    bottom: -70px;
+    right: 0;
+    left: 0;
+   background: #fff;
+   transform: skewY(-3deg); /* rotates bar -3 degrees */
+   -webkit-transform: skewY(-3deg); /* add chrome compatability */
+   -moz-transform: skewY(-3deg); /* adds firefox compatability */
+   -ms-transform: skewY(-3deg); /*adds internet explorer/edge compatability */
+}
+
+/* Stats */
+.stats {
+    padding-top: 100px;
+    animation: slideinfrombottom 1s ease-in;
+}
+
+.stats-heading {
+    max-width: 500px;
+    margin:auto;
+}
+
+.stats .grid h3 {
+    font-size: 35px;
+}
+
+.stats .grid p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Cli */
+.cli .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.cli .grid > *:first-child /*selects anything that is the first element in cli. * means anything here*/{
+grid-column: 1 / span 2;
+grid-row: 1 / span 2;
+}
+
+/* Cloud */
+.Cloud .grid {
+    grid-template-columns: 4fr, 3fr;
+}
+
+/* Languages */
+
+.languages .flex {
+flex-wrap: wrap;
+}
+
+.languages .card{
+text-align: center;
+margin: 18px 10px 40px;
+transition: transform 0.2s ease-in;
+}
+
+.languages .card h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.languages .card:hover {
+transform: translateY(-15px);
+}
+
+/* Features */
+.features-head img, 
+.docs-head img {
+    width: 200px;
+    justify-self: flex-end; /* moves picture to end of flexbox*/ 
+}
+
+.features-sub-head img {
+    width: 300px;
+    justify-self: flex-end;
+}
+
+.features-main .card > i { /* >i means the initial icon in this case */
+margin-right: 20px;
+}
+
+.features-main .grid {
+    padding:30px;
+}
+
+.features-main .grid > *:first-child /*selects anything that is the first element in cli. * means anything here*/{
+    grid-column: 1 / span 3;
+    }
+    
+.features-main .grid > *:nth-child(2) /* selects element we secify, in this case second element */{
+        grid-column: 1 / span 2;
+        }
+
+/* Docs */
+.docs-main h3 {
+    margin: 20px 0;
+} 
+
+.docs-main .grid {
+    grid-template-columns: 1fr 2fr;
+    align-items: flex-start;
+}
+
+.docs-main nav li {
+    font-size: 17px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px #ccc solid;
+}
+
+.docs-main a:hover {
+    font-weight: bold;
+}
+
+/*Footer*/
+.footer .social a {
+    margin: 10px;
+}
+
+/* Animations */
+@keyframes slideinfromleft {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideinfromright {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideinfromtop {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideinfrombottom {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Tables & under */
+@media(max-width: 768px) {
+.grid,
+.showcase .grid,
+.stats .grid,
+.cli .grid,
+.cloud .grid,
+.features-main .grid,
+.docs-main .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.showcase {
+    height: auto;
+}
+
+.showcase-text {
+    text-align: center;
+    margin-top: 40px;
+    animation: slideinfromtop 1s ease-in;
+}
+
+.showcase-form {
+    justify-self: center;
+    margin: auto;
+    animation: slideinfrombottom 1s ease-in;
+}
+
+.cli .grid > *:first-child {
+    grid-column: 1;
+    grid-row: 1;
+    }
+
+.features-head,
+.features-sub-head,
+.docs-head {
+    text-align: center; 
+}
+
+.features-head img, /* Aligns images in features and docs pages to centre */
+.features-sub-head img,
+.docs-head img {
+    justify-self: center; 
+}
+
+.features-main .grid > *:first-child,
+.features-main .grid > *:nth-child(2) {
+    grid-column: 1;
+}
+}
+
+/* mobile */
+@media(max-width: 500px) {
+    .navbar {
+        height: 110px;
+    }
+
+    .navbar .flex {
+        flex-direction: column;
+    }
+
+    .navbar ul {
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
